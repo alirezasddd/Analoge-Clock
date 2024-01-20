@@ -16,16 +16,28 @@ class Clock():
         pygame.display.set_caption("Analog Clock")
         self.clock = pygame.time.Clock()
 
+    def draw_circle(self, screen):
+        # main circle
+        pygame.draw.circle(self.screen, self.white,
+                           self.center, self.clock_radius - 10, 5)
+        
+        #central circle
+        pygame.draw.circle(self.screen, self.white,
+                           self.center, 10)
+
+
     def run(self):
         while True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     exit()
             self.screen.fill(self.blue)
+            self.draw_circle(self.screen)
+
             pygame.display.update()
             self.clock.tick(self.FPS)
 
- 
+
 if __name__ == '__main__':
     myClocl = Clock()
     myClocl.run()
