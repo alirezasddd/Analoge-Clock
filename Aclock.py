@@ -7,8 +7,8 @@ class Clock():
 
     def __init__(self):
         self.width, self.height = 650, 650
-        self.white = (255, 255, 255)
-        self.blue = (34, 79, 228)  # back grond color
+        self.white = (149, 165, 166)
+        self.background_color = (52, 73, 94)  # back grond color
         self.FPS = 60
         self.center = (self.width//2, self.height//2)
         self.clock_radius = self.width//2
@@ -56,20 +56,20 @@ class Clock():
         minute = curent_time.minute
         hour = curent_time.hour
 
-        #hour
-        R = self.clock_radius -190
+        # hour
+        R = self.clock_radius - 190
         theta = (hour + minute/60 + second/3600) * (360 / 12)
         pygame.draw.line(self.screen, self.white, self.center, self.polar_to_cartesian
                          (R, theta), 14)
-        
-        #minute
-        M = self.clock_radius -150
-        theta = ( minute + second/60) * (360 / 60)
+
+        # minute
+        M = self.clock_radius - 150
+        theta = (minute + second/60) * (360 / 60)
         pygame.draw.line(self.screen, self.white, self.center, self.polar_to_cartesian
                          (R, theta), 10)
-        
-        #second
-        S = self.clock_radius -100
+
+        # second
+        S = self.clock_radius - 100
         theta = second * (360 / 60)
         pygame.draw.line(self.screen, self.white, self.center, self.polar_to_cartesian
                          (R, theta), 4)
@@ -79,7 +79,7 @@ class Clock():
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     exit()
-            self.screen.fill(self.blue)
+            self.screen.fill(self.background_color)
             self.draw_circle(self.screen)
             self.draw_clock_hand()
 
